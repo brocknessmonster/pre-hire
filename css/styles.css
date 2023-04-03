@@ -1,0 +1,84 @@
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: black;
+    background-color: #f0f0f0;
+    background-color: #a9a9a9;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    min-width: 320px;
+    min-height: 1100px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.form_wrapper, .results_wrapper{
+    margin: 1em 1%;
+    min-height: 5em;
+    border: 1px solid blue;
+}
+
+.form_wrapper form table, 
+.form_wrapper form p,
+.results_wrapper table {
+    width: 100%;
+}
+
+.form_wrapper form table td,
+.form_wrapper form table th,
+.results_wrapper table td,
+.results_wrapper table th {
+    width: 50%;
+}
+
+.form_wrapper form table tbody tr:nth-of-type(odd),
+.results_wrapper table tbody tr:nth-of-type(odd) {
+    background-color: white;
+}
+
+
+.form_wrapper input {
+    float: right;
+    width: 20%;
+}
+
+.right-text {
+    text-align: right;
+}
+
+.left-text {
+    text-align: left;    
+}
+
+.center-text {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .form_wrapper,.results_wrapper{
+        width: 47%;
+    }
+    .form_wrapper {
+        float: left;
+    }
+    .results_wrapper {
+        float: right;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .form_wrapper,.results_wrapper{
+        width: 98%;
+    }
+    .form_wrapper {
+        float: none;
+    }
+    .results_wrapper {
+        float: none;
+    }
+}

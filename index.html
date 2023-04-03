@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8">
+    <title>Test - Dynamic Asynchronous Form Processing</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <body>
+        <div class="container">
+            <div class="form_wrapper">
+
+            </div>
+            <div class="results_wrapper">
+
+            </div>
+        </div>
+        <script type="text/javascript" src="js/form_script.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const inputForm = new Form({
+                    height : window.innerHeight,
+                    width : window.innerWidth,
+                    form_tmpl : form_tmpl,
+                    results_tmpl : results_tmpl
+                });
+                console.log('index ln 23');
+                inputForm.init();
+            });
+        </script>
+    </body>
+</html>
