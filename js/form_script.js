@@ -51,9 +51,7 @@ class Form {
     async getFormData(){
         const response = await fetch('/data/json_tmpl.php?type=form');
         const data = await response.json();
-        console.log('data',data);
         this.appendTbodyRow(data);
-        console.log('get');
     }
 
     validateData() {
@@ -83,13 +81,11 @@ class Form {
             // this.processFormData();
             // this.postFormData();
             this.validateData();
-            e.target.disable = true;
-            console.log('click');
+            e.target.disabled = true;
         });
     }
 
     tableRowMaker(rowNumber,randNumber,context) {
-        console.log('context',context);
         let dynamicRow = null;
         if (context == 'form') {
             dynamicRow = "             <td><input class=\"right-text\" type=\"text\" value=\"" + randNumber + "\" name=\"randNumberArr[]\"></td>\n";
@@ -105,10 +101,8 @@ class Form {
 
     appendOuterTmpl(tmplName) {
         if (tmplName == 'form') {
-            console.log('form 96',document.getElementsByClassName('form_wrapper'));
             document.getElementsByClassName('form_wrapper')[0].innerHTML = this.formTmpl;
         } else if (tmplName == 'results') {
-            console.log('results 99',document.getElementsByClassName('results_wrapper'));
             document.getElementsByClassName('results_wrapper')[0].innerHTML = this.resultsTmpl;
         }
     }
@@ -123,10 +117,8 @@ class Form {
     }
 
     appendTbodyRow(formData) {
-        console.log('tbody',formData.random_numbers);
         let rowNumber = 0;
         while(rowNumber < formData.random_numbers.length) {
-            console.log('row');
             const randNumber = formData.random_numbers[rowNumber];
             rowNumber++;
             let table_row = this.tableRowMaker(rowNumber,randNumber,'form');
@@ -138,7 +130,6 @@ class Form {
     init() {
         this.appendOuterTmpl('form');
         this.getFormData();
-        // console.log('init',this);
     }
 
 }
