@@ -3,8 +3,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: black;
-    background-color: #f0f0f0;
-    background-color: #a9a9a9;
+    background-color: #fefefe;
     padding: 0;
 }
 
@@ -12,15 +11,14 @@ body {
     max-width: 900px;
     min-width: 320px;
     min-height: 1100px;
+    height: auto;
     margin: 0 auto;
-    padding: 0;
-    background-color: #f0f0f0;
+    padding: 0;    
 }
 
-.form_wrapper, .results_wrapper{
+.form_wrapper, .results_wrapper {
     margin: 1em 1%;
     min-height: 5em;
-    border: 1px solid blue;
 }
 
 .form_wrapper form table, 

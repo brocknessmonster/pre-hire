@@ -1,5 +1,6 @@
 const results_tmpl = "\n" + 
 "    <table>\n" +
+"        <caption>Computed Results For Submitted Data</caption>\n" +
 "        <thead>\n" +
 "            <tr>\n" +
 "              <th>Property</th>\n" +
@@ -14,6 +15,7 @@ const results_tmpl = "\n" +
 const form_tmpl = "\n" + 
 "<form class=\"form\" id=\"random_number_form\">\n" +
 "    <table>\n" +
+"        <caption>Input Numbers Between 0 and 100</caption>\n" +
 "        <thead>\n" +
 "            <tr>\n" +
 "              <th>#</th>\n" +
@@ -54,7 +56,7 @@ class Form {
         this.appendTbodyRow(data);
     }
 
-    validateData() {
+    validateData(buttonEl) {
         const inputElArr = document.getElementsByName('randNumberArr[]');
         let errorFlag = 0; // no errors
         Array.prototype.forEach.call(inputElArr,(inputEl) => {
@@ -71,6 +73,7 @@ class Form {
         if (errorFlag != 0) {
             return false;
         }
+        buttonEl.disabled = true;
         this.postFormData();
     }
         
@@ -78,10 +81,7 @@ class Form {
     bindSubmit() {
         document.getElementsByTagName('button')[0].addEventListener('click',(e)=>{
             e.preventDefault();
-            // this.processFormData();
-            // this.postFormData();
-            this.validateData();
-            e.target.disabled = true;
+            this.validateData(e.target); // passing e.target -> reference to button el            
         });
     }
 

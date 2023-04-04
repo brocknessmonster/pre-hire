@@ -42,7 +42,7 @@ class Database {
         $insertStr = "INSERT INTO computed_results(`computed_result_label`,`computed_result_value`) VALUES ";
         $valuesStr = "";
         foreach($data as $key => $value) {
-            $valuesStr .= "(".$key.",".$value."),";
+            $valuesStr .= "('".$key."',".$value."),";
         }
         $cleanValuesStr = rtrim($valuesStr,",");
         $insertStr .= $cleanValuesStr;
