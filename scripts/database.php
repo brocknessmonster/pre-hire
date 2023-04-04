@@ -35,6 +35,7 @@ class Database {
         }
         $cleanValuesStr = rtrim($valuesStr,",");
         $insertStr .= $cleanValuesStr;
+        $this->db->query($insertStr);
     }
 
     public function insertResults($data) {
