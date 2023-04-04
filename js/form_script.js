@@ -61,13 +61,15 @@ class Form {
         let errorFlag = 0; // no errors
         Array.prototype.forEach.call(inputElArr,(inputEl) => {
             inputEl.style.backgroundColor = 'transparent';
-            if (typeof Number(inputEl.value) != 'number') {
+            console.log('input vvalue typeof ',typeof inputEl.value === 'string');
+            if (isNaN(Number(inputEl.value))) {
                 errorFlag = 1;
                 inputEl.style.backgroundColor = 'red';
-            }
-            if (Number(inputEl.value) > 100 || Number(inputEl.val) < 0) {
-                errorFlag = 1;
-                inputEl.style.backgroundColor = 'red';
+            } else {
+                if (Number(inputEl.value) > 100 || Number(inputEl.val) < 0) {
+                    errorFlag = 1;
+                    inputEl.style.backgroundColor = 'red';
+                }
             }
         });
         if (errorFlag != 0) {
