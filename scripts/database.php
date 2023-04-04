@@ -1,15 +1,5 @@
 <?php
 
-$db = new mysqli('database','lamp','lamp','lamp');
-
-if ($db->connect_error) {
-    die("Error: " . $db->connect_error);   
-} else {
-
-}
-
-$result = $db->query('SHOW TABLES');
-
 
 class Database {
 
@@ -39,15 +29,16 @@ class Database {
         $insertStr = "INSERT INTO number_results(`result_value`) VALUES ";
         $valuesStr = "";
         foreach($data as $key => $value) {
-            $valuesStr .= "(".$value."),";
+            if (is_numeric($value) && $value > 0 && $value < 100) {
+                $valuesStr .= "(".$value."),";
+            }
         }
         $cleanValuesStr = rtrim($valuesStr,",");
         $insertStr .= $cleanValuesStr;
-        $results = $this->db->query($insertStr);
-        return $results->affected_rows;
     }
 
     public function insertResults($data) {
+        /* data should be an object with property names and values */
         $insertStr = "INSERT INTO computed_results(`computed_result_label`,`computed_result_value`) VALUES ";
         $valuesStr = "";
         foreach($data as $key => $value) {
@@ -55,20 +46,19 @@ class Database {
         }
         $cleanValuesStr = rtrim($valuesStr,",");
         $insertStr .= $cleanValuesStr;
-        $results = $this->db->query($insertStr);
-        return $results->affected_rows;
+        $this->db->query($insertStr);
     }
 
     public function init($jsonData,$context) {
         $this->testConnection();
         $data = json_decode($jsonData);
-        if ($context == 'numbers') {
+        if ($context == 'numbers' && is_null($this->dbError)) {
             $result = $this->insertNumbers($data->numbers);
-        } else if ($context == 'results') {
+        } else if ($context == 'results' && is_null($this->dbError)) {
             unset($data->numbers);
             $result = $this->insertResults($data);
         }
-        var_dump($result);
+        $this->db->close();
     }
 
 }

@@ -21,7 +21,7 @@ if ($_GET['type'] == 'form') {
     $db->init($payload,'numbers'); // insert number values into mysql tbl number_results
     $db->init($payload,'results'); // insert results values into mysql tbl computed_results
 
-    // echo json_encode($payload);
+    echo $payload;
 
 }
 
