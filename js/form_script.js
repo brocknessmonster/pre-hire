@@ -88,6 +88,9 @@ class Form {
 
     tableRowMaker(rowNumber,randNumber,context) {
         let dynamicRow = null;
+        if (rowNumber == 'salesTaxValue'){
+            rowNumber = 'sales tax value';
+        }
         if (context == 'form') {
             dynamicRow = "             <td><input class=\"right-text\" type=\"text\" value=\"" + randNumber + "\" name=\"randNumberArr[]\"></td>\n";
         } else if (context == 'results') {

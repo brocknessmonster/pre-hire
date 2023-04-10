@@ -39,6 +39,9 @@ body {
     background-color: white;
 }
 
+.results_wrapper table tbody tr td:first-of-type {
+    text-transform: capitalize;
+}
 
 .form_wrapper input {
     float: right;
