@@ -61,7 +61,6 @@ class Form {
         let errorFlag = 0; // no errors
         Array.prototype.forEach.call(inputElArr,(inputEl) => {
             inputEl.style.backgroundColor = 'transparent';
-            console.log('input vvalue typeof ',typeof inputEl.value === 'string');
             if (isNaN(Number(inputEl.value))) {
                 errorFlag = 1;
                 inputEl.style.backgroundColor = 'red';
