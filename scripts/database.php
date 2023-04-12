@@ -26,11 +26,11 @@ class Database {
 
     public function insertNumbers($data) {
         /* $data should be an array of numbers from the form */
-        $insertStr = "INSERT INTO number_results(`result_value`) VALUES ";
+        $insertStr = "INSERT INTO number_results(`result_value`,`result_timestamp`) VALUES ";
         $valuesStr = "";
         foreach($data as $key => $value) {
             if (is_numeric($value) && $value > 0 && $value < 100) {
-                $valuesStr .= "(".$value."),";
+                $valuesStr .= "(".$value.",NOW()),";
             }
         }
         $cleanValuesStr = rtrim($valuesStr,",");
@@ -40,10 +40,10 @@ class Database {
 
     public function insertResults($data) {
         /* data should be an object with property names and values */
-        $insertStr = "INSERT INTO computed_results(`computed_result_label`,`computed_result_value`) VALUES ";
+        $insertStr = "INSERT INTO computed_results(`computed_result_label`,`computed_result_value`,`computed_result_timestamp`) VALUES ";
         $valuesStr = "";
         foreach($data as $key => $value) {
-            $valuesStr .= "('".$key."',".$value."),";
+            $valuesStr .= "('".$key."',".$value.",NOW()),";
         }
         $cleanValuesStr = rtrim($valuesStr,",");
         $insertStr .= $cleanValuesStr;
