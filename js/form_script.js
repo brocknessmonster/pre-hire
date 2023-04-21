@@ -1,32 +1,32 @@
-const results_tmpl = "\n" + 
-"    <table>\n" +
-"        <caption>Computed Results For Submitted Data</caption>\n" +
-"        <thead>\n" +
-"            <tr>\n" +
-"              <th>Property</th>\n" +
-"              <th>Value</th>\n" +
-"            </tr>\n" +
-"        </thead>\n" +
-"        <tbody id=\"resultsData\">\n" +
-"        </tbody>\n" +
-"    </table>\n";
+const results_tmpl = `
+    <table>
+        <caption>Computed Results For Submitted Data</caption>
+        <thead>
+            <tr>
+              <th>Property</th>
+              <th>Value</th>
+            </tr>
+        </thead>
+        <tbody id="resultsData">
+        </tbody>
+    </table>`;
 
 
-const form_tmpl = "\n" + 
-"<form class=\"form\" id=\"random_number_form\">\n" +
-"    <table>\n" +
-"        <caption>Input Numbers Between 0 and 100</caption>\n" +
-"        <thead>\n" +
-"            <tr>\n" +
-"              <th>#</th>\n" +
-"              <th>Value</th>\n" +
-"            </tr>\n" +
-"        </thead>\n" +
-"        <tbody id=\"randomData\">\n" +
-"        </tbody>\n" +
-"    </table>\n" +
-"    <p class=\"right-text\"><button class=\"submit_btn\">Submit</button></p>\n" + 
-"</form>\n";
+const form_tmpl = ` 
+<form class="form" id="random_number_form">
+    <table>
+        <caption>Input Numbers Between 0 and 100</caption>
+        <thead>
+            <tr>
+              <th>#</th>
+              <th>Value</th>
+            </tr>
+        </thead>
+        <tbody id="randomData">
+        </tbody>
+    </table>
+    <p class="right-text"><button class=\"submit_btn\">Submit</button></p>
+</form>`;
 
 class Form {
 
@@ -92,15 +92,15 @@ class Form {
             rowNumber = 'sales tax value';
         }
         if (context == 'form') {
-            dynamicRow = "             <td><input class=\"right-text\" type=\"text\" value=\"" + randNumber + "\" name=\"randNumberArr[]\"></td>\n";
+            dynamicRow = `             <td><input class="right-text" type="text" value="${randNumber}" name="randNumberArr[]"></td>`;
         } else if (context == 'results') {
-            dynamicRow = "             <td class=\"right-text\">" + randNumber + "</td>\n";
+            dynamicRow = `             <td class="right-text">${randNumber}</td>`;
         }
-        return "\n" + 
-        "         <tr>\n" + 
-        "             <td class=\"right-text\">" + rowNumber + "</td>\n" + 
-        dynamicRow +
-        "         </tr>\n";
+        return `
+                 <tr>
+                     <td class="right-text">${rowNumber}</td>
+        ${dynamicRow}
+                 </tr>`;
     }
 
     appendOuterTmpl(tmplName) {
